@@ -138,8 +138,6 @@ const SUBSTANCE_PRESETS = {
     }
 };
 
-export { SUBSTANCE_PRESETS };
-
 if (typeof window !== "undefined") {
     window.SUBSTANCE_PRESETS = SUBSTANCE_PRESETS;
 }
