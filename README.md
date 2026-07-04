@@ -92,11 +92,17 @@ smaller populations or larger time steps. As the particle count increases, the
 Random mode approaches the deterministic expectation statistically.
 
 ## Discussion
-The following screenshots (fig. 2 and fig. 3) show an analysis with the /test/test.js script.
-Different step sizes in the simulation of the preset "Demo" with 30 years are compared.
+The following screenshots (fig. 2 and fig. 3) show an analysis with the /test/test_steps.js script.
+Different step sizes in the simulation of the preset "Demo" with 30 years and 800 Atoms are compared.
 Note that the average values of the random simulations are going against the theoretical value with increasingly smaller steps.
 
 ![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Demo_30j.png)
 *fig. 2: Screenshots of the Website. Same Parameters as in the Test.*
-![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis.png)
+![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_step.png)
 *fig. 3: Screenshot of an Excel analysis with diagrams for every substance in "Demo" and Box plots for different step sizes.*
+
+The next Excel analysis (fig.4) shows the random distribution of 1200 Atoms after 30 Years (Preset "Demo").
+The lines in the cluster of points are due to the fixed Atom amounts (because A and E are small fractions).
+
+![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_dist.png)
+*fig. 4: Screenshot of an Excel analysis of the random distribution*
