@@ -178,6 +178,8 @@ class DecaySimulator {
 // --------------------------------------------------
 }
 
+export { DecaySimulator };
+
 if (typeof window !== "undefined") {
     window.DecaySimulator = DecaySimulator;
 }
