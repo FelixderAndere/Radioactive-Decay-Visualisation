@@ -101,8 +101,9 @@ Note that the average values of the random simulations are going against the the
 ![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_step.png)
 *fig. 3: Screenshot of an Excel analysis with diagrams for every substance in "Demo" and Box plots for different step sizes.*
 
-The next Excel analysis (fig.4) shows the random distribution of 1200 Atoms after 30 Years (Preset "Demo").
+The next Excel analysis (fig.4) shows the random distribution of 1200 Atoms with Step=1 Year after 30 Years (Preset "Demo").
 The lines in the cluster of points are due to the fixed Atom amounts (because A and E are small fractions).
+The distribution should be a Poisson distribution but distinguishing it from a normal distribution is not so clear. 
 
 ![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_dist.png)
 *fig. 4: Screenshot of an Excel analysis of the random distribution*
