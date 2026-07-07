@@ -14,10 +14,10 @@ A simple simulation and visualisation of radioactive decay.
 ### See the Website here:
 https://felixderandere.github.io/Radioactive-Decay-Visualisation/
 
-
 ### Screenshot
 ![App Screenshot](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Demo.png)
 *fig. 1: Two Screenshots of the Website. On the left "Theory" view, on the right "Random" view with simulated values.*
+
 
 ## Content
 - Python cli
@@ -48,7 +48,6 @@ decay. After one half-life, the expected amount of the original substance is
 reduced to 50%.
 
 ### Theory
-
 The **Theory** mode computes the expected value of the system without random
 sampling. Every step uses the decay probability above, but replaces the random
 outcome with its mean value. For one substance this is the exponential decay
@@ -91,9 +90,10 @@ the curve fluctuates around the Theory curve and can deviate more strongly for
 smaller populations or larger time steps. As the particle count increases, the
 Random mode approaches the deterministic expectation statistically.
 
+
 ## Discussion
 The following screenshots (fig. 2 and fig. 3) show an analysis with the /test/test_steps.js script.
-Different step sizes in the simulation of the preset "Demo" with 30 years and 800 Atoms are compared.
+Different step sizes in the simulation of the preset "Demo" with 30 years and 800 atoms are compared.
 Note that the average values of the random simulations are going against the theoretical value with increasingly smaller steps.
 
 ![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Demo_30j.png)
@@ -101,8 +101,8 @@ Note that the average values of the random simulations are going against the the
 ![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_step.png)
 *fig. 3: Screenshot of an Excel analysis with diagrams for every substance in "Demo" and Box plots for different step sizes.*
 
-The next Excel analysis (fig.4) shows the random distribution of 1200 Atoms with Step=1 Year after 30 Years (Preset "Demo").
-The lines in the cluster of points are due to the fixed Atom amounts (because A and E are small fractions).
+The next Excel analysis (fig.4) shows the random distribution of 1200 atoms with step=1 year after 30 years (preset "Demo").
+The lines in the cluster of points are due to the fixed atom amounts (because A and E are small fractions).
 The distribution should be a Poisson distribution but distinguishing it from a normal distribution is not so clear. 
 
 ![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_dist.png)
@@ -110,7 +110,7 @@ The distribution should be a Poisson distribution but distinguishing it from a n
 
 To analyse the distribution, the following sheet focuses exclusively on the decay of A, with the parameters selected to optimise the Poisson characteristics.
 Consequently, the simulation duration is very short in order to generate only a small number of decayed atoms, thereby reducing lambda and creating greater asymmetry.
-It can be seen that the simulation corresponds almost perfectly to a Poisson distribution and follows the laws of physics and mathematics.
+It can be seen (fig. 5) that the simulation corresponds almost perfectly to a Poisson distribution and follows the laws of physics and mathematics.
 
 ![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_poisson.png)
-*fig. 4: Screenshot of an Excel analysis of the poisson distribution*
+*fig. 5: Screenshot of an Excel analysis of the poisson distribution*
