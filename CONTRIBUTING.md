@@ -1,6 +1,6 @@
 # Contribution guidelines
 
-You are very welcome to contribute to this projec, whether it's:
+You are very welcome to contribute to this project, whether it's:
 - Reporting a bug
 - Discussing the current state of the code
 - Submitting a fix

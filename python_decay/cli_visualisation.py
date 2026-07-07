@@ -14,7 +14,7 @@ class CLI_visualisation():
 
 
     def simulate_decay(self, iterations: int, dt: float) -> None:
-        """ Takes Subsstances the iteration amount and the dt."""
+        """Run the simulation for the requested number of iterations and step size."""
         for i in range(iterations):
             substances = self.simulator.simulate(dt)
             self.draw_output(substances, iterations, dt, i)

@@ -1,4 +1,4 @@
-// Real isotope data adapted from reinpk/radioactive (MIT).
+// Real isotope data adapted from reinpk/radioactive under the MIT License.
 // Copyright (C) 2013 Peter Reinhardt.
 // Its isotope dataset was compiled from decay-chain and atomic-mass references in 2013.
 const SUBSTANCE_PRESETS = {

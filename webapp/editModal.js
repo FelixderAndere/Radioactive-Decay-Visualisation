@@ -5,7 +5,7 @@ const btnCancel = document.getElementById("modal-cancel-btn");
 const btnSave = document.getElementById("modal-save-btn");
 
 const substancesContainer = document.getElementById("modal-substances-container");
-const addContainer = document.getElementById("modal-add-container"); // ✅ NEU
+const addContainer = document.getElementById("modal-add-container");
 const btnAddSubstance = document.getElementById("btn-add-substance");
 
 let localSubstances = {};
@@ -24,7 +24,7 @@ btnModalEdit.addEventListener("click", () => {
         return value;
     }));
     renderModalSubstances();
-    renderAddRow()
+    renderAddRow();
     modal.style.display = "block";
 });
 
@@ -282,7 +282,7 @@ function addSubstance() {
     };
 
     renderModalSubstances();
-    renderAddRow(); // wichtig: Add-Row bleibt bestehen
+    renderAddRow();
 }
 
 function parseDecay(raw) {
@@ -320,20 +320,20 @@ function getSubstanceColor(name) {
 
 
 btnSave.addEventListener("click", () => {
-    // Collect edited dynamic Half Life data changes
+    // Collect edited half-life changes.
     document.querySelectorAll(".input-hl").forEach(input => {
         const key = input.getAttribute("data-key");
         let val = input.value.trim();
         localSubstances[key]["half life"] = (val === '∞') ? "∞" : parseFloat(val);
     });
 
-    // Collect edited Initial values data changes
+    // Collect edited initial value changes.
     document.querySelectorAll(".input-val").forEach(input => {
         const key = input.getAttribute("data-key");
         localSubstances[key].value = parseFloat(input.value) || 0.0;
     });
 
-    // Parse and collect multiple decay products from the string input
+    // Parse multiple decay products from the string input.
     document.querySelectorAll(".input-decay-list").forEach(input => {
         const key = input.getAttribute("data-key");
         localSubstances[key]["decay products"] = {};
@@ -341,7 +341,7 @@ btnSave.addEventListener("click", () => {
         const rawValue = input.value.trim();
         if (!rawValue) return;
 
-        // Split by comma to separate products
+        // Split by comma to separate products.
         const pairs = rawValue.split(",");
         pairs.forEach(pair => {
             const parts = pair.split(":");
@@ -356,7 +356,7 @@ btnSave.addEventListener("click", () => {
         });
     });
 
-    // Synchronize updates down to global core engine model dataset hook instance
+    // Push the edited dataset back into the simulation state.
     if (typeof updateSimulationDataset === 'function') {
         updateSimulationDataset(localSubstances);
     }

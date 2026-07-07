@@ -125,7 +125,7 @@ window.updateSimulationDataset = function(newDataset, settings = {}) {
 };
 
 
-// update particles
+// Particle controls.
 let particleCount = parseInt(document.getElementById('count-slider').value) || 100;
 document.getElementById('count-slider').addEventListener('input', function () {
     particleCount = parseInt(this.value);
@@ -183,7 +183,7 @@ const perfFpsLabel = document.getElementById('perf-fps');
 const presetSelect = document.getElementById('preset-select');
 const presetDescription = document.getElementById('preset-description');
 
-// Canvas Setup
+// Canvas setup.
 const particleCanvas = document.getElementById('particle-canvas');
 const pCtx = particleCanvas.getContext('2d');
 const chartPlot = document.getElementById('chart-plot');
@@ -262,7 +262,7 @@ function initStatsUI() {
         const hl = currentSubstancesData[key]["half life"];
         const hlText = hl === "∞" ? "∞" : `${hl} j`;
         const dp = currentSubstancesData[key]["decay products"];
-        // Convert fraction value back to clean legible percentage layout representation
+        // Convert fractions back into readable percentages for the UI.
         const dptext = Object.entries(dp).map(([k, v]) => `${k}: ${(v * 100).toFixed(2).replace(/\.?0+$/, "")}%`).join(", ");
         const color = getColorForSubstance(key);
         

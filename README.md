@@ -11,25 +11,25 @@ A simple simulation and visualisation of radioactive decay.
 
 
 ## Demo
-### See the Website here:
+### See the website here:
 https://felixderandere.github.io/Radioactive-Decay-Visualisation/
 
 ### Screenshot
 ![App Screenshot](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Demo.png)
-*fig. 1: Two Screenshots of the Website. On the left "Theory" view, on the right "Random" view with simulated values.*
+*Fig. 1: Two screenshots of the website. On the left is the "Theory" view; on the right is the "Random" view with simulated values.*
 
 
 ## Content
-- Python cli
+- Python CLI
 - Webapp
 
 
 ## Features
-- Simulate the Decay for a given time.
-- Change simulation parameters like Atom amount or Step size.
-- Edit and Select your desired decay chain.
-- Visualisation via an Atomic lattice and a Chart
-- Compare the theoretical and simulated chart.
+- Simulate decay for a given time.
+- Change simulation parameters such as atom count or step size.
+- Edit and select the decay chain you want.
+- Visualise the results with an atomic lattice and a chart.
+- Compare the theoretical and simulated charts.
 
 
 ## Physical / Mathematical Explanation
@@ -68,7 +68,7 @@ N_next = N(t) - decayed
 product_next = product_current + decayed * branching_ratio
 ```
 
-The result is a smooth, deterministic curve that represents the mean behavior
+The result is a smooth, deterministic curve that represents the mean behaviour
 of infinitely many repeated experiments.
 
 ### Random
@@ -92,25 +92,25 @@ Random mode approaches the deterministic expectation statistically.
 
 
 ## Discussion
-The following screenshots (fig. 2 and fig. 3) show an analysis with the /test/test_steps.js script.
+The following screenshots (Figs. 2 and 3) show an analysis produced with the `/test/test_steps.js` script.
 Different step sizes in the simulation of the preset "Demo" with 30 years and 800 atoms are compared.
-Note that the average values of the random simulations are going against the theoretical value with increasingly smaller steps.
+Note that the average values of the random simulations move closer to the theoretical value as the step size decreases.
 
-![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Demo_30j.png)
-*fig. 2: Screenshots of the Website. Same Parameters as in the Test.*
-![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_step.png)
-*fig. 3: Screenshot of an Excel analysis with diagrams for every substance in "Demo" and Box plots for different step sizes.*
+![Screenshot of the Excel Analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Demo_30j.png)
+*Fig. 2: Screenshots of the website. Same parameters as in the test.*
+![Screenshot of the Excel Analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_step.png)
+*Fig. 3: Screenshot of an Excel analysis with diagrams for every substance in "Demo" and box plots for different step sizes.*
 
-The next Excel analysis (fig.4) shows the random distribution of 1200 atoms with step=1 year after 30 years (preset "Demo").
-The lines in the cluster of points are due to the fixed atom amounts (because A and E are small fractions).
-The distribution should be a Poisson distribution but distinguishing it from a normal distribution is not so clear. 
+The next Excel analysis (Fig. 4) shows the random distribution of 1200 atoms with a step size of 1 year after 30 years (preset "Demo").
+The lines in the cluster of points are due to the fixed atom amounts, because A and E are small fractions.
+The distribution should follow a Poisson distribution, but distinguishing it from a normal distribution is not possible.
 
-![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_dist.png)
-*fig. 4: Screenshot of an Excel analysis of the random distribution*
+![Screenshot of the Excel Analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_dist.png)
+*Fig. 4: Screenshot of an Excel analysis of the random distribution.*
 
 To analyse the distribution, the following sheet focuses exclusively on the decay of A, with the parameters selected to optimise the Poisson characteristics.
-Consequently, the simulation duration is very short in order to generate only a small number of decayed atoms, thereby reducing lambda and creating greater asymmetry.
-It can be seen (fig. 5) that the simulation corresponds almost perfectly to a Poisson distribution and follows the laws of physics and mathematics.
+Consequently, the simulation duration is very short in order to generate only a small number of decayed atoms, thereby creating greater asymmetry.
+It can be seen in Fig. 5 that the simulation corresponds almost perfectly to a Poisson distribution and follows the laws of physics and mathematics.
 
-![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_poisson.png)
-*fig. 5: Screenshot of an Excel analysis of the poisson distribution*
+![Screenshot of the Excel Analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_poisson.png)
+*Fig. 5: Screenshot of an Excel analysis of the Poisson distribution.*

@@ -9,13 +9,13 @@ class DecaySimulator:
 
 
     def decay_matrix(self, substances: dict) -> tuple:
-        """Takes Substances dict and prepares Lists and a Matrix"""
+        """Build the name list, index map, values array, and decay matrix."""
         names = list(substances.keys())
         idx = {n: i for i, n in enumerate(names)}
         n = len(names)
         values = np.array([substances[n]["value"] for n in names], dtype=float)
         
-        # Validate input values
+        # Validate the input values.
         if sum(values) != 1.0:
             raise ValueError("Initial values must sum to 1.0")
         for substance in substances.values():
@@ -26,7 +26,7 @@ class DecaySimulator:
             if sum(substance["decay products"].values()) > 1:
                 raise ValueError("Sum of decay product portions cannot exceed 1")
 
-        # Build the decay matrix A
+        # Build the decay matrix A.
         A = np.zeros((n, n), dtype=float)
         for name, data in substances.items():
             j = idx[name]
@@ -41,13 +41,13 @@ class DecaySimulator:
 
 
     def simulate(self, years: int):
-        """Simulates the decay over a given number of years."""
+        """Simulate the decay over a given number of years."""
         new_values = expm(self.A * years) @ self.values
         return {name: round(float(new_values[i]),2) for i, name in enumerate(self.names)}
 
 
 if __name__ == "__main__":
-    # Example usage
+    # Example usage.
     substances = {
     "A": {"value": 1, "half life": 5, "decay products": {"B" : 0.7, "C" : 0.3,}},
     "B": {"value": 0, "half life": 3, "decay products": {"C": 1,},},
