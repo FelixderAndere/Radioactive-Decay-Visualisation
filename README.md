@@ -107,3 +107,10 @@ The distribution should be a Poisson distribution but distinguishing it from a n
 
 ![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_dist.png)
 *fig. 4: Screenshot of an Excel analysis of the random distribution*
+
+To analyse the distribution, the following sheet focuses exclusively on the decay of A, with the parameters selected to optimise the Poisson characteristics.
+Consequently, the simulation duration is very short in order to generate only a small number of decayed atoms, thereby reducing lambda and creating greater asymmetry.
+It can be seen that the simulation corresponds almost perfectly to a Poisson distribution and follows the laws of physics and mathematics.
+
+![Screenshot of the Excel Analisys](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_poisson.png)
+*fig. 4: Screenshot of an Excel analysis of the poisson distribution*

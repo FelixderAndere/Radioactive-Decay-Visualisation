@@ -8,9 +8,9 @@ export function benchmark(
 ) {
     const preset = SUBSTANCE_PRESETS.demo;
 
-    const maxTime = 30;
-    const repetitions = 10000;
-    const dt = 1;
+    const maxTime = 0.01;
+    const repetitions = 20000;
+    const dt = 0.001;
 
     const workbook = XLSX.utils.book_new();
     const rows = [];
@@ -48,4 +48,4 @@ export function benchmark(
     console.log(`Excel geschrieben: ${outputFile}`);
 }
 
-benchmark("decay_dist_test.xlsx", 1200);
+benchmark("decay_dist_test.xlsx", 5000);
