@@ -112,5 +112,5 @@ To analyse the distribution, the following sheet focuses exclusively on the deca
 Consequently, the simulation duration is very short in order to generate only a small number of decayed atoms, thereby creating greater asymmetry.
 It can be seen in Fig. 5 that the simulation corresponds almost perfectly to a Poisson distribution and follows the laws of physics and mathematics.
 
-![Screenshot of the Excel Analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_poisson.png)
+![Screenshot of the Excel Analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_distributions.png)
 *Fig. 5: Screenshot of an Excel analysis of the Poisson distribution.*
