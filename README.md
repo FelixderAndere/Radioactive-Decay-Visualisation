@@ -199,7 +199,7 @@ The Poisson distribution arises only as the limiting case
 Mathematically,
 
 ```
-μ = Np.
+μ = Np
 
 Binomial(N,p)
         ↓
