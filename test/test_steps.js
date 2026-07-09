@@ -1,8 +1,8 @@
-import * as XLSX from "xlsx";
-import { DecaySimulator } from "../webapp/decay.js";
-import { SUBSTANCE_PRESETS } from "../webapp/presets.js";
+const XLSX = require("xlsx");
+const { DecaySimulator } = require("../webapp/decay.js");
+const { SUBSTANCE_PRESETS } = require("../webapp/presets.js");
 
-export function benchmarkStepSizes(outputFile = "decay_test.xlsx") {
+function benchmarkStepSizes(outputFile = "decay_test.xlsx") {
 
     const preset = SUBSTANCE_PRESETS.demo;
 
@@ -68,3 +68,5 @@ export function benchmarkStepSizes(outputFile = "decay_test.xlsx") {
 }
 
 benchmarkStepSizes();
+
+module.exports = { benchmarkStepSizes };

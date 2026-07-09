@@ -91,8 +91,8 @@ const SUBSTANCE_PRESETS = {
         description: "Thorium series ending in stable Pb-208.",
         maxTime: 100000000000,
         maxTimeSlider_max: 100000000000,
-        maxTimeSlider_min: 50000000000, 
-        maxTimeSlider_step: 1000000,       
+        maxTimeSlider_min: 50000000000,
+        maxTimeSlider_step: 1000000,
         timeStep: 100000000,
         timeStepSlider_max: 500000000,
         timeStepSlider_min: 8000000,
@@ -118,7 +118,7 @@ const SUBSTANCE_PRESETS = {
         maxTime: 0.06,
         maxTimeSlider_max: 0.1,
         maxTimeSlider_min: 0.01,
-        maxTimeSlider_step: 0.01,   
+        maxTimeSlider_step: 0.01,
         timeStep: 0.000001,
         timeStepSlider_max: 0.00005,
         timeStepSlider_min: 0.0000001,
@@ -138,6 +138,10 @@ const SUBSTANCE_PRESETS = {
     }
 };
 
-if (typeof window !== "undefined") {
-    window.SUBSTANCE_PRESETS = SUBSTANCE_PRESETS;
+if (typeof globalThis !== "undefined") {
+    globalThis.SUBSTANCE_PRESETS = SUBSTANCE_PRESETS;
+}
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = { SUBSTANCE_PRESETS };
 }

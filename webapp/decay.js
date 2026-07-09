@@ -178,6 +178,10 @@ class DecaySimulator {
 // --------------------------------------------------
 }
 
-if (typeof window !== "undefined") {
-    window.DecaySimulator = DecaySimulator;
+if (typeof globalThis !== "undefined") {
+    globalThis.DecaySimulator = DecaySimulator;
+}
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = { DecaySimulator };
 }
