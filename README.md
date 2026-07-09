@@ -2,115 +2,181 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/FelixderAndere/Radioactive-Decay-Visualisation)
 ![GitHub issues](https://img.shields.io/github/issues/FelixderAndere/Radioactive-Decay-Visualisation)
 ![GitHub Pages](https://img.shields.io/badge/demo-online-brightgreen.svg)
-![GitHub release](https://img.shields.io/github/v/release/FelixderAndere/Radioactive-Decay-Visualisation)
+![GitHub release](https://img.shields.io/github/v/release/Radioactive-Decay-Visualisation)
 [![Live Demo](https://img.shields.io/badge/live-demo-blue?logo=github)](https://felixderandere.github.io/Radioactive-Decay-Visualisation/)
 
+# Radioactive Decay Visualisation
 
-# Radioactive-Decay-Visualisation
-A simple simulation and visualisation of radioactive decay.
+An interactive simulation and visualisation of radioactive decay chains.
 
 
-## Demo
-### See the website here:
+
+
+# Demo
+
+## Live website
+
 https://felixderandere.github.io/Radioactive-Decay-Visualisation/
 
-### Screenshot
+## Screenshot
+
 ![App Screenshot](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Demo.png)
-*Fig. 1: Two screenshots of the website. On the left is the "Theory" view; on the right is the "Random" view with simulated values.*
+
+*Fig. 1: Two screenshots of the website showing the deterministic ("Theory") mode and the stochastic ("Random") simulation.*
 
 
-## Content
-- Python CLI
-- Webapp
+# Content
+
+- Interactive web application
+- Simulation engine
+- Configurable decay chains
+- Statistical validation scripts
+- Python CLI (outdated)
 
 
-## Features
-- Simulate decay for a given time.
-- Change simulation parameters such as atom count or step size.
-- Edit and select the decay chain you want.
-- Visualise the results with an atomic lattice and a chart.
-- Compare the theoretical and simulated charts.
+# Features
+
+- Simulate radioactive decay
+- Change simulation parameters
+   - Adjust atom count,  simulation step size and simulation duration
+- Edit or select the decay chain you want.
+   - Configure half-lives and branching ratios
+- Visualise isotope populations over time
+   - See the results with an atomic lattice and a chart.
+   - Switch between deterministic and stochastic simulation
+- Export data for statistical analysis
 
 
-## Physical / Mathematical Explanation
-Radioactive decay is probabilistic on the particle level, but stable in the
-average over many particles. For a nucleus with half-life `T_1/2`, the decay
+
+
+# Physical / Mathematical Background
+
+Radioactive decay is fundamentally a random process. Every unstable nucleus has a constant probability of decaying per unit time, independent of its age.
+
+For a nucleus with half-life `T₁/₂`, the decay
 constant is
 
 ```text
-lambda = ln(2) / T_1/2
-p = 1 - exp(-lambda * dt)
+λ = ln(2) / T₁/₂
+p = 1 - exp(-λΔt)
 ```
 
 where `p` is the probability that one particle decays during the time step
-`dt`. A shorter half-life means a larger `lambda` and therefore a faster
+`Δt`. A shorter half-life means a larger `λ` and therefore a faster
 decay. After one half-life, the expected amount of the original substance is
 reduced to 50%.
 
-### Theory
-The **Theory** mode computes the expected value of the system without random
-sampling. Every step uses the decay probability above, but replaces the random
-outcome with its mean value. For one substance this is the exponential decay
-law:
+
+## Theory Mode
+
+Theory mode computes the expected deterministic value of the decay process.
+
+Every step uses the decay probability above, but replaces the random
+outcome with its mean value. The exponential decay law is:
 
 ```text
-N(t) = N_0 * exp(-lambda * t)
+N(t) = N₀ * exp(-λ · t)
 ```
 
 For a decay chain, each substance is updated from its current amount by
 subtracting the expected decayed fraction and distributing that fraction to
-its decay products according to the configured branching ratios. In discrete
-form, for one step of length `dt`:
+its decay products (daughter isotopes) according to the configured branching ratios.
 
 ```text
-decayed = N(t) * (1 - exp(-lambda * dt))
+decayed = N(t) * (1 - exp(-λ · Δt))
 N_next = N(t) - decayed
-product_next = product_current + decayed * branching_ratio
+product_next = product_current + (decayed · branching_ratio)
 ```
 
-The result is a smooth, deterministic curve that represents the mean behaviour
-of infinitely many repeated experiments.
 
-### Random
-The **Random** mode uses the same physical decay probability, but applies it to
-an explicit finite particle population. Internally, the simulator converts the
-current amount into a sample size, performs random trials for that sample, and
-then scales the result back to the displayed fraction. In practice this behaves
-like a binomial process:
+
+The resulting curves are smooth and deterministic and represent the average behaviour of infinitely many repeated experiments.
+
+
+## Random Mode
+
+Random mode simulates individual particles with decay probabilities.
+
+The simulator converts the current fraction `N` into an absolute amount `n`, 
+performs for each particle independently one Bernoulli trial with probability `p`
+and converts the decayed amount `X` back into the displayed fraction.
+In practice this behaves like a binomial process:
 
 ```text
-n = round(N * particleCount)
-c ~ Binomial(n, p)
-decayed = c / particleCount
+n = round(N · particleCount)
+X ~ Binomial(n,p)
 ```
 
-If a substance decays, its decayed fraction is distributed to the configured
-products using the branching ratios. Because the number of particles is finite,
-the curve fluctuates around the Theory curve and can deviate more strongly for
-smaller populations or larger time steps. As the particle count increases, the
-Random mode approaches the deterministic expectation statistically.
+Because only a finite number of particles is simulated, every run produces slightly different curves
+and can deviate more strongly for smaller populations or larger time steps.
 
 
-## Discussion
-The following screenshots (Figs. 2 and 3) show an analysis produced with the `/test/test_steps.js` script.
-Different step sizes in the simulation of the preset "Demo" with 30 years and 800 atoms are compared.
-Note that the average values of the random simulations move closer to the theoretical value as the step size decreases.
 
-![Screenshot of the Excel Analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Demo_30j.png)
-*Fig. 2: Screenshots of the website. Same parameters as in the test.*
-![Screenshot of the Excel Analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_step.png)
-*Fig. 3: Screenshot of an Excel analysis with diagrams for every substance in "Demo" and box plots for different step sizes.*
 
-The next Excel analysis (Fig. 4) shows the random distribution of 1200 atoms with a step size of 1 year after 30 years (preset "Demo").
-The lines in the cluster of points are due to the fixed atom amounts, because A and E are small fractions.
-The distribution should follow a Poisson distribution, but distinguishing it from a normal distribution is not possible.
+# Discussion
 
-![Screenshot of the Excel Analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_dist.png)
-*Fig. 4: Screenshot of an Excel analysis of the random distribution.*
+The following validation tests investigate both the numerical implementation and the statistical properties of the simulation. The data is produced with
+the `/test/test_steps.js` and `/test/test_distribution.js` script and analysed with EXCEL. 
 
-To analyse the distribution, the following sheet focuses exclusively on the decay of A, with the parameters selected to optimise the Poisson characteristics.
-Consequently, the simulation duration is very short in order to generate only a small number of decayed atoms, thereby creating greater asymmetry.
-It can be seen in Fig. 5 that the simulation corresponds almost perfectly to a Poisson distribution and follows the laws of physics and mathematics.
 
-![Screenshot of the Excel Analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_distributions.png)
-*Fig. 5: Screenshot of an Excel analysis of the Poisson distribution.*
+## Numerical convergence
+
+The first benchmark investigates the influence of the simulation step size.
+
+The preset `Demo` was simulated over `30 years` with identical initial conditions (`800 atoms`) while varying only the simulation time step.
+
+![Step size comparison](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Demo_30j.png)
+
+*Fig. 2: Comparison of the deterministic and stochastic simulations.*
+
+![Excel analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_step.png)
+
+*Fig. 3: Excel analysis comparing different simulation step sizes.*
+
+
+The results demonstrate the expected numerical behaviour:
+
+- smaller time steps reduce discretisation errors,
+- the average of many stochastic simulations converges towards the deterministic solution,
+- remaining deviations originate from statistical fluctuations of the finite particle population. 
+
+The simulator therefore converges towards the analytical solution as the time step approaches zero while preserving the stochastic behaviour expected for radioactive decay.
+
+
+## Distribution of complete decay chains
+
+The next benchmark analyses the statistical distribution after 30 simulated years using the complete decay chain.
+
+![Distribution analysis](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_dist.png)
+
+*Fig. 4: Distribution of all isotopes after repeated stochastic simulations.*
+
+
+Several observations can be made:
+
+- isotopes with only a few atoms show discrete quantisation because atom numbers are integers,
+- the visible lines in the point clusters are therefore a physical consequence of finite particle numbers rather than a numerical artefact.
+- these distributions are nearly symmetric and visually indistinguishable from a normal distribution.
+
+
+## Statistical analysis of a single decay process
+
+To investigate the underlying probability distribution in more detail, the complete decay chain is reduced to a single radioactive isotope.
+
+The parameters were intentionally selected to maximise the asymmetry of the distribution:
+
+- short simulation time,
+- small decay probability,
+- many repeated simulations.
+
+Under these conditions only a small fraction of atoms decays, making the differences between probability distributions clearly visible.
+
+The simulated histogram is compared with
+
+- the Binomial distribution,
+- the Poisson distribution,
+- the Normal distribution.
+
+![Distribution comparison](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_distributions.png)
+
+*Fig. 5: Comparison of the simulated decay histogram with theoretical probability distributions.*
