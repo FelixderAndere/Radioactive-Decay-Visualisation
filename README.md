@@ -180,3 +180,56 @@ The simulated histogram is compared with
 ![Distribution comparison](https://github.com/FelixderAndere/Radioactive-Decay-Visualisation/blob/main/test/images/Analysis_distributions.png)
 
 *Fig. 5: Comparison of the simulated decay histogram with theoretical probability distributions.*
+
+The Normal distribution already shows noticeable deviations. Both the Binomial and the Poisson distribution closely match the measured histogram. Only the RSME and MAE show a slighly better fit for the Binomial distribution.
+
+Radioactive decay should approximately follow a Poisson distribution for infinite Atoms and small propabitilies. But the simulator starts with a fixed finite number of nuclei `N` and each nucleus independently decays with probability `p`. Consequently, the exact number of decayed nuclei is:
+
+```
+p = 1 - exp(-λt)
+X ~ Binomial(N,p)
+```
+
+The Poisson distribution arises only as the limiting case
+
+- large number of nuclei,
+- very small decay probability,
+- constant expected number of decays
+
+Mathematically,
+
+```
+μ = Np.
+
+Binomial(N,p)
+        ↓
+N → ∞
+p → 0
+Np = constant
+        ↓
+Poisson(μ)
+```
+
+Therefore, the distribution for a finite radioactive sample is Binomial, while the Poisson distribution is an excellent approximation whenever `N >> 1` and `p << 1`. 
+
+
+## Conclusions
+
+The statistical validation confirms that the simulator reproduces the expected physical behaviour of radioactive decay.
+
+- The deterministic simulation follows the exponential decay law.
+- The stochastic simulation reproduces the expected statistical fluctuations.
+- Numerical convergence is achieved for decreasing simulation step sizes.
+- Finite particle populations produce the expected discrete probability distributions.
+- The simulated decay counts follow the exact Binomial distribution and is almost indistinguishable from its Poisson approximation
+- The observed agreement with both theory and probability distributions provides strong validation of the simulation algorithm.
+
+
+# Use of AI
+
+This project was realised with assistance from AI for research and code / text writing.
+
+
+# License
+
+This project is released under the MIT License.
