@@ -135,6 +135,22 @@ const SUBSTANCE_PRESETS = {
             "Tc-99": { value: 0, "half life": 211000, "decay products": { "Ru-99": 1 } },
             "Ru-99": { value: 0, "half life": "∞", "decay products": {} }
         }
+    },
+    c14: {
+        label: "Carbon-14",
+        description: "Carbon-14 dating isotope, decays to stable nitrogen-14.",
+        maxTime: 50000,
+        maxTimeSlider_max: 100000,
+        maxTimeSlider_min: 10000,
+        maxTimeSlider_step: 100,
+        timeStep: 100,
+        timeStepSlider_max: 1000,
+        timeStepSlider_min: 10,
+        timeStepSlider_step: 10,
+        substances: {
+            "C-14": { value: 1.0, "half life": 5730, "decay products": { "N-14": 1.0 } },
+            "N-14": { value: 0.0, "half life": "∞", "decay products": {} }
+        }
     }
 };
 
