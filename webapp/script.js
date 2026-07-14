@@ -45,25 +45,35 @@ const maxTimeSlider = document.getElementById('max-time-input');
 const yearsMaxSpan = document.getElementById('years-max');
 const speedSlider = document.getElementById('speed-slider');
 const years_step = document.getElementById('years-step')
+const iterationsLabel = document.getElementById('iterations-count');
+
+function updateIterations() {
+    const iterationCount = time_step > 0 ? Math.ceil(maxTime / time_step) : 0;
+    iterationsLabel.innerText = iterationCount.toLocaleString();
+}
 
 let maxTime = parseFloat(maxTimeSlider.value) || 100;
 maxTimeSlider.addEventListener('input', function() {
     maxTime = parseFloat(this.value);
-    yearsMaxSpan.innerText = maxTime
+    yearsMaxSpan.innerText = maxTime;
+    updateIterations();
 }); 
 maxTimeSlider.addEventListener('change', function() {
     maxTime = parseFloat(this.value);
-    yearsMaxSpan.innerText = maxTime
+    yearsMaxSpan.innerText = maxTime;
+    updateIterations();
     drawChart(); 
 }); 
 let time_step = parseFloat(speedSlider.value) || 1;
 speedSlider.addEventListener('input', function() {
     time_step = parseFloat(this.value);
-    years_step.innerText = time_step
+    years_step.innerText = time_step;
+    updateIterations();
 }); 
 speedSlider.addEventListener('change', function() {
     time_step = parseFloat(this.value);
-    years_step.innerText = time_step
+    years_step.innerText = time_step;
+    updateIterations();
     drawChart(); 
 }); 
 
@@ -88,6 +98,8 @@ function applyPresetSettings(preset) {
         years_step.innerText = preset.timeStep;
         time_step = preset.timeStep;
     }
+
+    updateIterations();
 }
 
 window.updateSimulationDataset = function(newDataset, settings = {}) {
@@ -576,4 +588,5 @@ updateStatsUI(initialVals);
 drawParticles(initialVals);
 drawChart();
 
+updateIterations();
 animationFrameId = requestAnimationFrame(loop);

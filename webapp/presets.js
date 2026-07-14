@@ -138,7 +138,7 @@ const SUBSTANCE_PRESETS = {
     },
     c14: {
         label: "Carbon-14",
-        description: "Carbon-14 dating isotope, decays to stable nitrogen-14.",
+        description: "A radioactive isotope of carbon used to date organic materials (radiocarbon dating).",
         maxTime: 50000,
         maxTimeSlider_max: 100000,
         maxTimeSlider_min: 10000,
