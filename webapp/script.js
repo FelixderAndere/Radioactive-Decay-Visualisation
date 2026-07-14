@@ -417,7 +417,7 @@ function drawChart() {
                 y: visiblePoints.map(p => p.values[key] || 0),
                 type: 'scatter',
                 mode: 'lines+markers',
-                name: `Substance ${key}`,
+                name: `${key}`,
                 line: { color: getColorForSubstance(key), width: 2 },
                 marker: { size: 4 },
             };
@@ -430,7 +430,7 @@ function drawChart() {
             y: curve.map(v => v[idx]),
             type: 'scatter',
             mode: 'lines',
-            name: `Substance ${key}`,
+            name: `${key}`,
             line: { color: getColorForSubstance(key), width: 2 }
         };
     });
